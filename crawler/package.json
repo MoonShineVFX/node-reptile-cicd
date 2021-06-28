@@ -1,0 +1,19 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "description": "Cypress crawler",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:d": "cypress run -s cypress/integration/hr/workDate_aDay.js -b chrome",
+    "cy:m": "cypress run -s cypress/integration/hr/workDate_aMonth.js -b chrome"
+  },
+  "keywords": [],
+  "private": true,
+  "dependencies": {
+    "dayjs": "^1.10.5"
+  },
+  "devDependencies": {
+    "dayjs-plugin-utc": "^0.1.2"
+  }
+}

@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    volumes:
+      - mongodata:/data/db
+
+  reptile-web-api:
+    build: ./web-api
+    container_name: reptile-web-api
+    depends_on:
+      - mongodb
+    environment:
+      - HOST_NAME=192.168.1.65:27100
+      - DEBUG=express:router
+    restart: always
+
+  reptile-crawler:
+    build: ./crawler
+    container_name: reptile-crawler
+    depends_on:
+      - reptile-web-api
+    environment:
+      - CYPRESS_baseUrl=http://reptile-web-api:8080
+    command: npx cypress run -s /app/cypress/integration/hr/workDate_aDay.js -b chrome
+
+volumes:
+  mongodata:
