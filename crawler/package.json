@@ -2,7 +2,7 @@
   "name": "crawler",
   "version": "1.0.0",
   "description": "Cypress crawler",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "cy:open": "cypress open",
     "cy:d": "cypress run -s cypress/integration/hr/workDate_aDay.js -b chrome",

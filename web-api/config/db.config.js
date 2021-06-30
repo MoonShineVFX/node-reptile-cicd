@@ -1,5 +1,3 @@
-const COMMON = require('./index');
-
 module.exports = {
-    url: `mongodb://${COMMON.dbHOST}/${COMMON.dbName}`,
+    url: `mongodb://${process.env.HOST_NAME}/${process.env.DB_NAME}`,
 };

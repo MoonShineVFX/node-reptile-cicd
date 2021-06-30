@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const COMMON = require('./config');
 const db = require('./models');
 const { exportAllData, findAll } = require('./controllers/workDate.controller');
 const workDateRouter = require('./routes/workDate.route');
@@ -41,12 +40,14 @@ db.mongoose
     })
     .then(() => {
 
-        console.log(`========== Connected to the db ${COMMON.dbHOST} ==========`);
+        console.log('check:', process.env.HOST_NAME)
+        console.log(`========== Connected to the db ${db.url} ==========`);
 
     })
     .catch((err) => {
 
-        console.log('========== Cannot connect to the db... ==========', err);
+        console.log('check:', process.env.HOST_NAME)
+        console.log(`========== Cannot connect to the db (${db.url})... ==========`, err);
 
     });
 
