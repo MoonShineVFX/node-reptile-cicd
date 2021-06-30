@@ -32,7 +32,7 @@ services:
         environment:
             - CYPRESS_baseUrl=http://192.168.50.32:8080
         # command: npx cypress run -s /app/cypress/integration/hr/workDate_aDay.js -b chrome
-        command: sh -c "reptile.sh"
+        # command: sh -c "reptile.sh"
 
 # volumes:
 #     mongodata:
