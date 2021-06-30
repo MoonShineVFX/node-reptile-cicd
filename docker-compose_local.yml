@@ -25,13 +25,15 @@ services:
         restart: always
 
     reptile-crawler:
+        ipc: host
+        # https://github.com/cypress-io/cypress/issues/350
         build: ./crawler
         container_name: reptile-crawler
         depends_on:
             - reptile-web-api
         environment:
             - CYPRESS_baseUrl=http://192.168.50.32:8080
-        # command: npx cypress run -s /app/cypress/integration/hr/workDate_aDay.js -b chrome
+        # command: npx cypress run -s /app/cypress/integration/hr/workDate_aDay.js -b chrome > /proc/1/fd/1 2>/proc/1/fd/2
         # command: sh -c "reptile.sh"
 
 # volumes:

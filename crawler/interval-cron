@@ -1,2 +1,2 @@
-55 22 * * * export TZ=Asia/Taipei; cypress run -s cypress/integration/hr/workDate_aDay.js > /proc/1/fd/1 2>/proc/1/fd/2
-50 3 6 * * export TZ=Asia/Taipei; cypress run -s cypress/integration/hr/workDate_aMonth.js > /proc/1/fd/1 2>/proc/1/fd/2
+30 4 * * * export TZ=Asia/Taipei; npx cypress run -s cypress/integration/hr/workDate_aDay.js > /proc/1/fd/1 2>/proc/1/fd/2
+50 3 6 * * export TZ=Asia/Taipei; npx cypress run -s cypress/integration/hr/workDate_aMonth.js > /proc/1/fd/1 2>/proc/1/fd/2
