@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   reptile-web-api:
     image: reptile-web-api
     container_name: reptile-web-api
@@ -10,6 +9,7 @@ services:
     environment:
       - HOST_NAME=mongodb:27017
       - DEBUG=express:router
+      - TZ=Asia/Taipei
     restart: always
 
   reptile-crawler:
@@ -19,7 +19,7 @@ services:
       - reptile-web-api
     environment:
       - CYPRESS_baseUrl=http://reptile-web-api:8080
-    command: npx cypress run -s /app/cypress/integration/hr/workDate_aDay.js -b chrome
+      - TZ=Asia/Taipei
 
 networks:
   default: moonshine-net

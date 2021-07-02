@@ -1,40 +1,37 @@
 version: '3'
 
 services:
-
-    # mongodb:
-    #     image: mongo
-    #     container_name: mongodb
-    #     restart: always
-    #     volumes:
-    #         - mongodata:/data/db
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        restart: always
+        volumes:
+            - mongodata:/data/db
+        environment:
+            - TZ=Asia/Taipei
 
     reptile-web-api:
         build: ./web-api
         container_name: reptile-web-api
-        # depends_on:
-        #     - mongodb
+        depends_on:
+            - mongodb
         ports:
-            - 8080:8080
+            - 8080
         environment:
-            - HOST_NAME=192.168.50.32:27100
+            - HOST_NAME=mongodb:27017
             - DB_NAME=hr
-            # - HOST_NAME=192.168.1.65:27100
-            # - DB_NAME=human_resource
             - DEBUG=express:router
+            - TZ=Asia/Taipei
         restart: always
 
     reptile-crawler:
-        ipc: host
-        # https://github.com/cypress-io/cypress/issues/350
         build: ./crawler
         container_name: reptile-crawler
         depends_on:
             - reptile-web-api
         environment:
-            - CYPRESS_baseUrl=http://192.168.50.32:8080
-        # command: npx cypress run -s /app/cypress/integration/hr/workDate_aDay.js -b chrome > /proc/1/fd/1 2>/proc/1/fd/2
-        # command: sh -c "reptile.sh"
+            - CYPRESS_baseUrl=http://reptile-web-api:8080
+            - TZ=Asia/Taipei
 
-# volumes:
-#     mongodata:
+volumes:
+    mongodata:
