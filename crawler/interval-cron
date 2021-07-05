@@ -1,3 +1,3 @@
 PATH="/usr/local/bin:/usr/bin:/bin"
-30 4 * * * cd /app; npx cypress run -s cypress/integration/hr/workDate_aDay.js > /proc/1/fd/1 2> /proc/1/fd/2
+30 3,13 * * * cd /app; npx cypress run -s cypress/integration/hr/workDate_aDay.js > /proc/1/fd/1 2> /proc/1/fd/2
 50 3 6 * * cd /app; npx cypress run -s cypress/integration/hr/workDate_aMonth.js > /proc/1/fd/1 2> /proc/1/fd/2
