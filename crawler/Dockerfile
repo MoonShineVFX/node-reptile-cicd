@@ -11,7 +11,7 @@ COPY interval-cron /etc/cron.d/interval-cron
 RUN crontab /etc/cron.d/interval-cron
 
 COPY reptile.sh .
-RUN chmod a+x reptile.sh
+RUN chmod 755 reptile.sh
 
 COPY . .
 
