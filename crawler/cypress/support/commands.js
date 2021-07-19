@@ -54,7 +54,7 @@ Cypress.Commands.add('handleCollectData', ($elem) => {
 Cypress.Commands.add('handleRangeDate', (type = 'today') => {
 
     const today = dayjs();
-    const start = dayjs((type === 'today') ? today : dayjs().subtract(1, 'month').startOf('month')).format('YYYY-MM-DD');
+    const start = dayjs((type === 'today') ? today.add(-1, 'day') : dayjs().subtract(1, 'month').startOf('month')).format('YYYY-MM-DD');
     const end = dayjs((type === 'today') ? today : dayjs().subtract(1, 'month').endOf('month')).format('YYYY-MM-DD');
 
     cy.get('[name="ctl00$MainContent$txtAttendDate1"]')
